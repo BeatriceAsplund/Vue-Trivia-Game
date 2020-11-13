@@ -1,9 +1,7 @@
 <template>
   <div class="container">
       <div class="title">Pick a category</div>
-      <router-link to="/startscreen">
          <button @click="exitGame" id="quit" >QUIT (navigate to startscreen)</button>
-      </router-link>
       <div>Choose a category for Round 1</div>
       <CategoryItems v-bind:categories="fetchedCategories" v-on:category-click="handleCategoryClick"/>
   </div>
@@ -17,10 +15,13 @@ export default {
   name: 'CategoriesContainer',
   methods: {
         exitGame() {
-            confirm("Are you sure you want to quit?");
+          const isConfirm = confirm("Are you sure you want to quit?");
+          if(isConfirm){
+              this.$router.push("/");
+          }  
         },
         handleCategoryClick(id) {
-            console.log(id);
+            this.$router.push({name:"QuestionScreen", params:{id}})
         }
     },
   components: {CategoryItems},

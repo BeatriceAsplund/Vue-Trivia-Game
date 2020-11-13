@@ -11,12 +11,25 @@ export default {
 </script>
 
 <style>
-body {
-    background-color: rgb(38, 38, 73);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 #app {
-
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
+
+
+
+
+
+.container {
+  justify-content: center;
+  display: flex;
+  width: auto;
+  height: auto;
+  color: lavender;
+  margin-top:2rem;
+}
+
 </style>
