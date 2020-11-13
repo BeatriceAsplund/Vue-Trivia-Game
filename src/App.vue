@@ -1,22 +1,22 @@
 <template>
   <div id="app">
-    <CategoriesContainer />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import CategoriesContainer from './components/CategoriesContainer.vue'
-
 export default {
-  name: 'App',
-  components: {
-    CategoriesContainer
-  }
+  name: 'App'
 }
 </script>
 
 <style>
-#app {
+body {
+    background-color: rgb(38, 38, 73);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#app {
+
 }
 </style>

@@ -1,6 +1,11 @@
 <template>
-  <div>
-      <CategoryItems v-bind:categories="fetchedCategories"/>
+  <div class="container">
+      <div class="title">Pick a category</div>
+      <router-link to="/startscreen">
+         <button @click="exitGame" id="quit" >QUIT (navigate to startscreen)</button>
+      </router-link>
+      <div>Choose a category for Round 1</div>
+      <CategoryItems v-bind:categories="fetchedCategories" v-on:category-click="handleCategoryClick"/>
   </div>
 </template>
 
@@ -10,6 +15,14 @@ import CategoryItems from './CategoryItems.vue'
 
 export default {
   name: 'CategoriesContainer',
+  methods: {
+        exitGame() {
+            confirm("Are you sure you want to quit?");
+        },
+        handleCategoryClick(id) {
+            console.log(id);
+        }
+    },
   components: {CategoryItems},
   data: () => ({
       fetchedCategories: null
@@ -18,10 +31,26 @@ export default {
       axios
        .get('https://opentdb.com/api_category.php')
        .then(response => this.fetchedCategories = response.data.trivia_categories)
-  }
+    }
 }
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+    section {
+        margin: 5px;
+        max-width: 300px;
+        height: 25px;
+        line-height: 25px;
+        text-align: center;
+        background-color: lightgray;
+        padding: 10px;
+        display: inline-block;
+    }
+
+    section:active {
+        background-color: rgb(145, 145, 145);
+    }
 </style>
