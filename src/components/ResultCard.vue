@@ -1,45 +1,32 @@
 <template>
-<div class="container">
-  <div class="result-card">
+  <div class="container">
+    <div class="card-style">
       <h2>End Result</h2>
-      <div> Your points: {{points}}</div>
+      <div>Your points: {{ points }}</div>
 
-      <button class="btn-success playAgainButton" @click="playAgain">Play Again!</button>
-  </div>
+      <button class="btn-success play-again-button" @click="playAgain">
+        Play Again!
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-    name:"ResultCard",
-    props:["points"],
-    methods:{
-        playAgain(){
-            // Skicka till kategori sidan istället
-            this.$router.replace("/categoriescontainer");
-        }
-    }
-
-}
+  name: "ResultCard",
+  props: ["points"],
+  methods: {
+    playAgain() {
+      this.$router.replace("/categories");
+    },
+  },
+};
 </script>
 
 <style scoped>
-
-.result-card{
-    display: block;
-  position: relative;
-  width: 400px;
-  height: auto;
-  padding: 1.5rem;
-  background-color: #090916;
-  border-radius: 16px;
-  box-shadow: -0.1rem 0 2rem #000;
-
+.play-again-button {
+  padding: 5px;
+  margin-top: 1rem;
+  border-radius: 8px;
 }
-.playAgainButton{
-    padding: 5px;
-    margin-top: 1rem;
-    border-radius: 8px;
-}
-
 </style>

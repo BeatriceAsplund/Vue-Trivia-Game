@@ -6,13 +6,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 Vue.use(VueRouter)
 
 import StartScreen from './views/StartScreen'
-import CategoriesContainer from './components/CategoriesContainer'
+import CategoriesScreen from './views/CategoriesScreen'
 import Questions from './views/QuestionScreen'
 import EndPage from './views/EndScreen'
 
 const routes = [
     { path: '/', component: StartScreen },
-    { path: '/categoriescontainer', component: CategoriesContainer },
+    { path: '/categories', component: CategoriesScreen },
     { path: '/questions', name: 'QuestionScreen', component: Questions },
     {path: '/finish', name: 'EndScreen',component: EndPage}
 ]

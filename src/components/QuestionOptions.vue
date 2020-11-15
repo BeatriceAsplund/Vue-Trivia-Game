@@ -1,10 +1,12 @@
 <template>
-  <div class="options" v-if="answers!=null">
+  <div class="options" v-if="answers != null">
     <button
-    class="btn answerButton"
+      class="btn answer-button"
       v-bind:key="answer"
       v-for="answer in answers"
-      :class=" answer == 'True' ? 'isTrue' : answer == 'False' ? 'isFalse' : '' " 
+      :class="
+        answer == 'True' ? 'is-true' : answer == 'False' ? 'is-false' : ''
+      "
       @click="$emit('answer-click', answer)"
     >
       {{ answer }}
@@ -15,34 +17,42 @@
 <script>
 export default {
   name: "QuestionOptions",
-  props: ["answers"],
+  props: ["answers","type"],
 
   data() {
     return {};
   },
-  mounted(){
-    if(this.type != "boolean"){
+  beforeMount() {
       this.shuffleAnswers(this.answers);
-    }
+
   },
   methods: {
-        
     shuffleAnswers(array) {
-      for (let i = array.length - 1; i > 0; i--) {
+      if(this.type == "boolean"){
+        array[0] = "True";
+        array[1] = "False"
+      }else{
+        for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         const temp = array[i];
         array[i] = array[j];
         array[j] = temp;
       }
+      }
+      
       return array;
-    }
+    },
   },
+  watch:{
+    answers(){
+      this.shuffleAnswers(this.answers);
+    }
+  }
 };
 </script>
 
 <style scoped>
-
-.answerButton {
+.answer-button {
   background: orange;
   position: relative;
   display: inline-block;
@@ -51,14 +61,14 @@ export default {
   text-align: center;
   vertical-align: middle;
 }
-.answerButton:hover {
+.answer-button :hover {
   box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.3);
 }
 
-.isTrue{
+.is-true {
   background: green;
 }
-.isFalse{
+.is-false {
   background: red;
 }
 
